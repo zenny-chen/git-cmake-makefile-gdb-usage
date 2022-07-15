@@ -14,6 +14,7 @@ Git、CMake、Makefile、GDB（LLDB）使用技巧
 - [怎么退出git bash编辑界面，怎么退出git log](https://blog.csdn.net/weixin_43290229/article/details/86094690)
 - [Git取消跟踪文件和目录](https://blog.csdn.net/qq_38301914/article/details/70198006)
 - [How To Rename a Local and Remote Git Branch](https://linuxize.com/post/how-to-rename-local-and-remote-git-branch/)
+- git递归拉取子项目：`git pull --recurse-submodules`
 - 丢弃当前修改的本地文件：`git checkout -- filepathname`
 - 丢弃上一次的提交：`git reset --hard origin/master`
 - `git status`：先检查一下情况
