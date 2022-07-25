@@ -46,6 +46,7 @@ handle SIGSEGV nostop noprint
 - [gdb到底是怎样实现的？](https://www.toutiao.com/a6699652803918299655)
 - [调试程序时，设置断点的原理是什么？](https://www.toutiao.com/a6651660887507599886/)
 - [gdb（debugger）加入软件断点的本质原理分析](https://www.toutiao.com/a6828945264800170504/)
+- [调试引入的不确定性：必现的BUG神秘消失，断点改变代码执行逻辑](https://www.toutiao.com/article/6830405796770087431/)
 
 <br />
 
