@@ -42,6 +42,10 @@ info registers regname
 ```bash
 handle SIGSEGV nostop noprint
 ```
+如果用的是LLDB，则用以下命令：
+```bash
+break set -n main -C "process handle --pass true --stop false SIGSEGV"
+```
 - [GDB and LLDB Command Examples](https://developer.apple.com/library/archive/documentation/IDEs/Conceptual/gdb_to_lldb_transition_guide/document/lldb-command-examples.html)
 - [gdb到底是怎样实现的？](https://www.toutiao.com/a6699652803918299655)
 - [调试程序时，设置断点的原理是什么？](https://www.toutiao.com/a6651660887507599886/)
