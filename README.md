@@ -138,7 +138,7 @@ if (NOT CUDA_TARGET_COMPUTE_CAPABILITY)
         message(STATUS "CUDA device-side code will assume compute capability ${FORMATTED_COMPUTE_CAPABILITY}")
 endif()
 
-set(CUDA_GENCODE "arch=compute_${CUDA_TARGET_COMPUTE_CAPABILITY},code=compu
+set(CUDA_GENCODE "arch=compute_${CUDA_TARGET_COMPUTE_CAPABILITY},code=\"sm_${CUDA_TARGET_COMPUTE_CAPABILITY},compute_${CUDA_TARGET_COMPUTE_CAPABILITY}\"")
 ```
 
 <br />
