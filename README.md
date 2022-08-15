@@ -66,6 +66,7 @@ break set -n main -C "process handle --pass true --stop false SIGSEGV"
 - [CMAKE添加编译选项](https://blog.csdn.net/qinglongzhan/article/details/80743731)（汇编语言的编译选项的环境变量：`CMAKE_ASM_FLAGS`）
 - [如何使用CMake为单个目标编译具有不同选项的不同源文件？](https://www.javaroad.cn/questions/90941)
 - [cmake 中使用环境变量](https://www.cnblogs.com/stdpain/p/13467203.html)
+- [MSVC_VERSION](https://cmake.org/cmake/help/latest/variable/MSVC_VERSION.html)
 - CMake同时指定当前项目支持C、C++和CUDA编译器（对于汇编语言的支持使用 **`enable_language()`**，而不在这里显式指定）：
 ```cmake
 PROJECT(project_name C CXX CUDA)
@@ -103,6 +104,8 @@ ADD_COMPILE_DEFINITIONS(SOME_DIR=\"${CMAKE_INSTALL_PREFIX}\")
 - 用CMake生成Eclipse C/C++项目工程：`cmake -G"Eclipse CDT4 - Unix Makefiles" -DCMAKE_BUILD_TYPE=Debug ...`。
 - [Using NASM with CMake and Clang](https://metricpanda.com/using-nasm-with-cmake-and-clang/)
 - CMake中开启汇编文件的编译：类Unix下使用GAS为 `ENABLE_LANGUAGE(ASM)`；Visual Studio下使用MASM为 `ENABLE_LANGUAGE(ASM_MASM)`；在Android Studio中使用为x86架构NASM，为：`enable_language(ASM_NASM)`。
+- [FindCUDAToolkit](https://cmake.org/cmake/help/latest/module/FindCUDAToolkit.html)
+- [CMAKE_CUDA_RUNTIME_LIBRARY](https://cmake.org/cmake/help/latest/variable/CMAKE_CUDA_RUNTIME_LIBRARY.html)
 - CMake中设置CUDA额外编译选项：`TARGET_COMPILE_OPTIONS(project_name PRIVATE $<$<COMPILE_LANGUAGE:CUDA>: --use_fast_math --gpu-architecture=sm35>)`
 - CMake中启用CUDA单独编译（即relocatable device code，-rdc=true）：
 ```cmake
