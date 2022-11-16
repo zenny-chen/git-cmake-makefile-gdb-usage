@@ -59,6 +59,7 @@ break set -n main -C "process handle --pass true --stop false SIGSEGV"
 - [cmake 简介](https://www.cnblogs.com/lidabo/p/7359422.html)
 - [CMAKE最全实战(1)](https://www.toutiao.com/i6858063275733713416/)
 - [CMAKE最全实战(2)](https://www.toutiao.com/a6859561394904236547/)
+- 判定CMake中某个符号是否没有被定义使用：`if(NOT DEFINED CMAKE_BUILD_TYPE)`。可参考：[Why if\(DEFINED <variable>\) doesn't work in cmake? \[duplicate\]](https://stackoverflow.com/questions/51621228/why-ifdefined-variable-doesnt-work-in-cmake)
 - [If value not equal in cmake 2.8](https://stackoverflow.com/questions/11741325/if-value-not-equal-in-cmake-2-8)（使用`if(NOT <expression>)`时，里面的 **`NOT`** 必须是全大写）
 - [cmake构建时指定编译器架构(x86 or x64)](https://www.cnblogs.com/lidabo/p/12017014.html)
 - [CMake平台判断](https://blog.csdn.net/bianchengjingling22/article/details/88810593)
