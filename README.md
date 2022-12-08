@@ -84,7 +84,7 @@ install(FILES $<TARGET_PDB_FILE:libname> DESTINATION bin)
 ```cmake
 install(FILES ${MY_SRC_LIB}/file.txt  RENAME file.log  DESTINATION dst_dir)
 ```
-- 用CMake来拷贝文件：
+- 用CMake来拷贝文件（[file\(COPY\)](https://cmake.org/cmake/help/latest/command/file.html#copy)）：
 ```cmake
 file(COPY "${CMAKE_SOURCE_DIR}/some_dir/header.h" "${CMAKE_SOURCE_DIR}/another_dir/resource.res" DESTINATION "${CMAKE_BINARY_DIR}/dir")
 ```
