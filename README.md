@@ -66,6 +66,7 @@ break set -n main -C "process handle --pass true --stop false SIGSEGV"
 - [Android NDK 开发之 CMake 必知必会](https://blog.csdn.net/zhying719/article/details/82657519)
 - [CMAKE添加编译选项](https://blog.csdn.net/qinglongzhan/article/details/80743731)（汇编语言的编译选项的环境变量：`CMAKE_ASM_FLAGS`）
 - [CMAKE_BUILD_TYPE](https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html#variable:CMAKE_BUILD_TYPE)（Debug, Release, RelWithDebInfo and MinSizeRel）
+- 编译选项针对不同构建类型的配置：`CMAKE_C_FLAGS_DEBUG`、`CMAKE_C_FLAGS_RELEASE`、`CMAKE_C_FLAGS_RELWITHDEBINFO`。
 - [Using NASM with CMake and Clang](https://metricpanda.com/using-nasm-with-cmake-and-clang/)
 - CMake中开启汇编文件的编译：类Unix下使用GAS为 `ENABLE_LANGUAGE(ASM)`；Visual Studio下使用MASM为 `ENABLE_LANGUAGE(ASM_MASM)`；在Android Studio中使用为x86架构NASM，为：`enable_language(ASM_NASM)`。
 - [如何使用CMake为单个目标编译具有不同选项的不同源文件？](https://www.javaroad.cn/questions/90941)
