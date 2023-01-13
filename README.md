@@ -112,8 +112,12 @@ ADD_COMPILE_DEFINITIONS(SOME_DIR=\"${CMAKE_INSTALL_PREFIX}\")
 
 关于上述命令中 **`Eclipse CDT4`** 的进一步描述：
 ```
-When I worked in the CDT generator I wasn't (and still am not) familiar with the release cycle or the design constraints of the CDT, hence the name includes CDT4 thinking it might not be compatible with the future versions. However, as another user points out people have successfully used it with CDT 5/6.
-So, as long as the CDT doesn't break the xml format for external makefiles you should be able to use it.
+When I worked in the CDT generator I wasn't (and still am not) familiar with the release cycle or the design constraints of the CDT, 
+        hence the name includes CDT4 thinking it might not be compatible with the future versions. 
+
+        However, as another user points out people have successfully used it with CDT 5/6.
+
+        So, as long as the CDT doesn't break the xml format for external makefiles you should be able to use it.
 ```
 
 - [FindCUDAToolkit](https://cmake.org/cmake/help/latest/module/FindCUDAToolkit.html)
