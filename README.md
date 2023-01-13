@@ -108,7 +108,7 @@ ADD_COMPILE_DEFINITIONS(SOME_DIR=\"${CMAKE_INSTALL_PREFIX}\")
 - [cmake中链接系统标准库](https://blog.csdn.net/ly890700/article/details/72806033)
 - [cmake引入第三方库](https://blog.csdn.net/yuegooxi/article/details/123706146)
 - CMake修改项目最终生成文件名的前缀和后缀：`set_target_properties(project_name PROPERTIES PREFIX "prefix")`；`set_target_properties(project_name  PROPERTIES SUFFIX "suffix")`。比如，要把输出文件扩展名改为 **.suf**：`set_target_properties(project_name PROPERTIES SUFFIX ".suf")`。如果当前CMake项目是一个Linux上的动态链接库，并且我们想让生成 .so 文件不带有“lib”前缀，则可以：`set_target_properties(MySharedLib PROPERTIES PREFIX "")`，那么最后将会生成“MySharedLib.so”文件。
-- 用CMake生成Eclipse C/C++项目工程：`cmake -G"Eclipse CDT4 - Unix Makefiles" -DCMAKE_BUILD_TYPE=Debug ...`。
+- 用CMake生成 **Eclipse** C/C++项目工程：`cmake -G"Eclipse CDT4 - Unix Makefiles" -DCMAKE_BUILD_TYPE=Debug ...`。
 - [FindCUDAToolkit](https://cmake.org/cmake/help/latest/module/FindCUDAToolkit.html)
 - [CMAKE_CUDA_RUNTIME_LIBRARY](https://cmake.org/cmake/help/latest/variable/CMAKE_CUDA_RUNTIME_LIBRARY.html)
 - CMake中设置CUDA额外编译选项：`TARGET_COMPILE_OPTIONS(project_name PRIVATE $<$<COMPILE_LANGUAGE:CUDA>: --use_fast_math --gpu-architecture=sm35>)`
