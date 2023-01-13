@@ -105,6 +105,8 @@ ADD_COMPILE_DEFINITIONS(SOME_DIR="${CMAKE_INSTALL_PREFIX}")
 ```cmake
 ADD_COMPILE_DEFINITIONS(SOME_DIR=\"${CMAKE_INSTALL_PREFIX}\")
 ```
+- [include_directories](https://cmake.org/cmake/help/latest/command/include_directories.html)（该选项相当于编译选项：**`-I`**）
+- [link_directories](https://cmake.org/cmake/help/latest/command/link_directories.html)（该选项相当于编译选项：**`-L`**）
 - [cmake:设置编译选项的讲究(add_compile_options和CMAKE_CXX_FLAGS的区别)](https://blog.csdn.net/10km/article/details/51731959)
 - [cmake中链接系统标准库](https://blog.csdn.net/ly890700/article/details/72806033)
 - [cmake引入第三方库](https://blog.csdn.net/yuegooxi/article/details/123706146)
