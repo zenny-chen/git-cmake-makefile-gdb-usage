@@ -121,6 +121,7 @@ However, as another user points out people have successfully used it with CDT 5/
 So, as long as the CDT doesn't break the xml format for external makefiles you should be able to use it.
 ```
 
+- [CMAKE_ECLIPSE_VERSION](https://cmake.org/cmake/help/latest/variable/CMAKE_ECLIPSE_VERSION.html)
 - [FindCUDAToolkit](https://cmake.org/cmake/help/latest/module/FindCUDAToolkit.html)
 - [CMAKE_CUDA_RUNTIME_LIBRARY](https://cmake.org/cmake/help/latest/variable/CMAKE_CUDA_RUNTIME_LIBRARY.html)
 - CMake中设置CUDA额外编译选项：`TARGET_COMPILE_OPTIONS(project_name PRIVATE $<$<COMPILE_LANGUAGE:CUDA>: --use_fast_math --gpu-architecture=sm35>)`
