@@ -59,11 +59,15 @@ break set -n main -C "process handle --pass true --stop false SIGSEGV"
 - [cmake 简介](https://www.cnblogs.com/lidabo/p/7359422.html)
 - [CMAKE最全实战(1)](https://www.toutiao.com/i6858063275733713416/)
 - [CMAKE最全实战(2)](https://www.toutiao.com/a6859561394904236547/)
-- Linux下安装CMake：首先用 sh 命令来执行CMake官网下载的sh文件。然后将生成的cmake目录中的 **bin** 目录下的文件拷贝到 **`/usr/bin/`** 目录中；最后将 **share** 目录下的所有子目录拷贝到 **`/usr/share/`** 目录中。如果在拷贝过程中需要sudo权限，则可以用：**`sudo  cp  cmake  /usr/bin/`** 这些命令去拷贝文件；使用 **`sudo  cp  -r  cmake-3.25  /usr/share/`** 这些命令来拷贝目录。
+- Linux系统下安装CMake：首先用 sh 命令来执行CMake官网下载的sh文件。然后将生成的cmake目录中的 **bin** 目录下的文件拷贝到 **`/usr/bin/`** 目录中；最后将 **share** 目录下的所有子目录拷贝到 **`/usr/share/`** 目录中。如果在拷贝过程中需要sudo权限，则可以用：**`sudo  cp  cmake  /usr/bin/`** 这些命令去拷贝文件；使用 **`sudo  cp  -r  cmake-3.25  /usr/share/`** 这些命令来拷贝目录。
 - 判定CMake中某个符号是否没有被定义使用：`if(NOT DEFINED CMAKE_BUILD_TYPE)`。可参考：[Why if\(DEFINED <variable>\) doesn't work in cmake? \[duplicate\]](https://stackoverflow.com/questions/51621228/why-ifdefined-variable-doesnt-work-in-cmake)
 - [If value not equal in cmake 2.8](https://stackoverflow.com/questions/11741325/if-value-not-equal-in-cmake-2-8)（使用`if(NOT <expression>)`时，里面的 **`NOT`** 必须是全大写）
 - [cmake构建时指定编译器架构(x86 or x64)](https://www.cnblogs.com/lidabo/p/12017014.html)
 - [CMake平台判断](https://blog.csdn.net/bianchengjingling22/article/details/88810593)
+- CMake判定当前是否使用的是MSVC编译器，使用 [MSVC](https://cmake.org/cmake/help/latest/variable/MSVC.html) 这一变量。比如：**`if(MSVC)`**。
+- CMake对当前使用哪种编译器的通常判断：[CMAKE_<LANG>_COMPILER_ID](https://cmake.org/cmake/help/latest/variable/CMAKE_LANG_COMPILER_ID.html)（这里的 **`<LANG>`** 可以是：[CMAKE_<LANG>_CLANG_TIDY](https://cmake.org/cmake/help/latest/variable/CMAKE_LANG_CLANG_TIDY.html)）Google整理出来的当前CMake支持的 **`<LANG>`** 的列表：
+> Supported languages include C , CXX (i.e. C++), CUDA , OBJC (i.e. Objective-C), OBJCXX , Fortran , HIP , ISPC , and ASM . By default C and CXX are enabled if no language options are given.
+- [MSVC_VERSION](https://cmake.org/cmake/help/latest/variable/MSVC_VERSION.html)
 - [Android NDK 开发之 CMake 必知必会](https://blog.csdn.net/zhying719/article/details/82657519)
 - [CMAKE添加编译选项](https://blog.csdn.net/qinglongzhan/article/details/80743731)（汇编语言的编译选项的环境变量：`CMAKE_ASM_FLAGS`）
 - [CMAKE_BUILD_TYPE](https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html#variable:CMAKE_BUILD_TYPE)（Debug, Release, RelWithDebInfo and MinSizeRel）
@@ -72,7 +76,6 @@ break set -n main -C "process handle --pass true --stop false SIGSEGV"
 - CMake中开启汇编文件的编译：类Unix下使用GAS为 `ENABLE_LANGUAGE(ASM)`；Visual Studio下使用MASM为 `ENABLE_LANGUAGE(ASM_MASM)`；在Android Studio中使用为x86架构NASM，为：`enable_language(ASM_NASM)`。
 - [如何使用CMake为单个目标编译具有不同选项的不同源文件？](https://www.javaroad.cn/questions/90941)
 - [cmake 中使用环境变量](https://www.cnblogs.com/stdpain/p/13467203.html)
-- [MSVC_VERSION](https://cmake.org/cmake/help/latest/variable/MSVC_VERSION.html)
 - CMake同时指定当前项目支持C、C++和CUDA编译器（对于汇编语言的支持使用 **`enable_language()`**，而不在这里显式指定）：
 ```cmake
 PROJECT(project_name C CXX CUDA)
