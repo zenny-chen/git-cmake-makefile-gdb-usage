@@ -78,6 +78,7 @@ break set -n main -C "process handle --pass true --stop false SIGSEGV"
 - CMake中开启汇编文件的编译：类Unix下使用GAS为 `ENABLE_LANGUAGE(ASM)`；Visual Studio下使用MASM为 `ENABLE_LANGUAGE(ASM_MASM)`；在Android Studio中使用为x86架构NASM，为：`enable_language(ASM_NASM)`。
 - [如何使用CMake为单个目标编译具有不同选项的不同源文件？](https://www.javaroad.cn/questions/90941)
 - [cmake 中使用环境变量](https://www.cnblogs.com/stdpain/p/13467203.html)
+- CMake通过设置CMake环境变量来为所有编译目标间接设置位置独立的代码（**`-fPIC`** 的效果）[CMAKE_POSITION_INDEPENDENT_CODE](https://cmake.org/cmake/help/latest/variable/CMAKE_POSITION_INDEPENDENT_CODE.html)
 - CMake同时指定当前项目支持C、C++和CUDA编译器（对于汇编语言的支持使用 **`enable_language()`**，而不在这里显式指定）：
 ```cmake
 PROJECT(project_name C CXX CUDA)
