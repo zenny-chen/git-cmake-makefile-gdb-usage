@@ -66,6 +66,7 @@ break set -n main -C "process handle --pass true --stop false SIGSEGV"
 - [string](https://cmake.org/cmake/help/latest/command/string.html)
 - [\[CMake\] Return value of cmake string find](https://cmake.org/pipermail/cmake/2014-June/057778.html)
 - [cmake构建时指定编译器架构(x86 or x64)](https://www.cnblogs.com/lidabo/p/12017014.html)
+- [cmake命令行生成32位和64位项目](https://www.cnblogs.com/pandamohist/p/13644953.html)
 - [CMake平台判断](https://blog.csdn.net/bianchengjingling22/article/details/88810593)
 - [cmake_host_system_information](https://cmake.org/cmake/help/latest/command/cmake_host_system_information.html)（可用于判断当前系统名，比如 **Ubuntu**、**CentOS** 等）
 - CMake判定当前是否使用的是MSVC编译器，使用 [MSVC](https://cmake.org/cmake/help/latest/variable/MSVC.html) 这一变量。比如：**`if(MSVC)`**。这里还包含了对 [MSVC_VERSION](https://cmake.org/cmake/help/latest/variable/MSVC_VERSION.html) 变量的介绍。
@@ -84,6 +85,15 @@ break set -n main -C "process handle --pass true --stop false SIGSEGV"
 ```cmake
 PROJECT(project_name C CXX CUDA)
 ```
+- 通过CMake环境变量设置C语言标准：[CMAKE_C_STANDARD](https://cmake.org/cmake/help/latest/variable/CMAKE_C_STANDARD.html)
+- 通过CMake环境变量设置C++语言标准：[CMAKE_CXX_STANDARD](https://cmake.org/cmake/help/latest/variable/CMAKE_CXX_STANDARD.html)
+比如：
+```cmake
+# 如果基于GCC等带有自身语法扩展的编译器，则默认会启用 -std=gnu11、-std=gnu++20 等
+set(CMAKE_C_STANDARD  11)
+set(CMAKE_CXX_STANDARD  20)
+```
+
 - CMake给Visual Studio设置环境变量，使用`VS_DEBUGGER_ENVIRONMENT`。具体可参考：[Correct use of VS_DEBUGGER_WORKING_DIRECTORY etc.](http://cmake.3232098.n2.nabble.com/Correct-use-of-VS-DEBUGGER-WORKING-DIRECTORY-etc-td7599386.html)（其中，正确地设置`VS_DEBUGGER_ENVIRONMENT`变量的方式如下所示）
 ```cmake
 set_target_properties(appName PROPERTIES VS_DEBUGGER_WORKING_DIRECTORY "PATH=${CMAKE_INSTALL_PREFIX}/bin;%PATH% \$(LocalDebuggerEnvironment)"
