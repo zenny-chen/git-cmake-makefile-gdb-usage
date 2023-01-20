@@ -59,6 +59,7 @@ break set -n main -C "process handle --pass true --stop false SIGSEGV"
 - [cmake 简介](https://www.cnblogs.com/lidabo/p/7359422.html)
 - [CMAKE最全实战(1)](https://www.toutiao.com/i6858063275733713416/)
 - [CMAKE最全实战(2)](https://www.toutiao.com/a6859561394904236547/)
+- [Android NDK 开发之 CMake 必知必会](https://blog.csdn.net/zhying719/article/details/82657519)
 - Linux系统下安装CMake：首先用 sh 命令来执行CMake官网下载的sh文件。然后将生成的cmake目录中的 **bin** 目录下的文件拷贝到 **`/usr/bin/`** 目录中；最后将 **share** 目录下的所有子目录拷贝到 **`/usr/share/`** 目录中。如果在拷贝过程中需要sudo权限，则可以用：**`sudo  cp  cmake  /usr/bin/`** 这些命令去拷贝文件；使用 **`sudo  cp  -r  cmake-3.25  /usr/share/`** 这些命令来拷贝目录。
 - 判定CMake中某个符号是否没有被定义使用：`if(NOT DEFINED CMAKE_BUILD_TYPE)`。可参考：[Why if\(DEFINED <variable>\) doesn't work in cmake? \[duplicate\]](https://stackoverflow.com/questions/51621228/why-ifdefined-variable-doesnt-work-in-cmake)
 - [If value not equal in cmake 2.8](https://stackoverflow.com/questions/11741325/if-value-not-equal-in-cmake-2-8)（使用`if(NOT <expression>)`时，里面的 **`NOT`** 必须是全大写）
@@ -72,18 +73,15 @@ break set -n main -C "process handle --pass true --stop false SIGSEGV"
 - CMake判定当前是否使用的是MSVC编译器，使用 [MSVC](https://cmake.org/cmake/help/latest/variable/MSVC.html) 这一变量。比如：**`if(MSVC)`**。这里还包含了对 [MSVC_VERSION](https://cmake.org/cmake/help/latest/variable/MSVC_VERSION.html) 变量的介绍。
 - CMake对当前使用哪种编译器的通用判定方法：[CMAKE_\<LANG\>_COMPILER_ID](https://cmake.org/cmake/help/latest/variable/CMAKE_LANG_COMPILER_ID.html)（这里的 **`<LANG>`** 可以是：[CMAKE_\<LANG\>_CLANG_TIDY](https://cmake.org/cmake/help/latest/variable/CMAKE_LANG_CLANG_TIDY.html)）。Google整理出来的当前CMake支持的 **`<LANG>`** 的列表：
 > Supported languages include C , CXX (i.e. C++), CUDA , OBJC (i.e. Objective-C), OBJCXX , Fortran , HIP , ISPC , and ASM . By default C and CXX are enabled if no language options are given.
-- [Android NDK 开发之 CMake 必知必会](https://blog.csdn.net/zhying719/article/details/82657519)
 - [CMAKE添加编译选项](https://blog.csdn.net/qinglongzhan/article/details/80743731)（汇编语言的编译选项的环境变量：`CMAKE_ASM_FLAGS`）
 - [CMAKE_BUILD_TYPE](https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html#variable:CMAKE_BUILD_TYPE)（Debug, Release, RelWithDebInfo and MinSizeRel）
 - 编译选项针对不同构建类型的配置：`CMAKE_C_FLAGS_DEBUG`、`CMAKE_C_FLAGS_RELEASE`、`CMAKE_C_FLAGS_RELWITHDEBINFO`。
 - [Using NASM with CMake and Clang](https://metricpanda.com/using-nasm-with-cmake-and-clang/)
-- CMake中开启汇编文件的编译：类Unix下使用GAS为 `ENABLE_LANGUAGE(ASM)`；Visual Studio下使用MASM为 `ENABLE_LANGUAGE(ASM_MASM)`；在Android Studio中使用为x86架构NASM，为：`enable_language(ASM_NASM)`。
-- [如何使用CMake为单个目标编译具有不同选项的不同源文件？](https://www.javaroad.cn/questions/90941)
-- [cmake 中使用环境变量](https://www.cnblogs.com/stdpain/p/13467203.html)
-- CMake通过设置CMake环境变量来为所有编译目标间接设置 **位置独立的代码**（**`-fPIC`** 的效果）[CMAKE_POSITION_INDEPENDENT_CODE](https://cmake.org/cmake/help/latest/variable/CMAKE_POSITION_INDEPENDENT_CODE.html)
-- CMake同时指定当前项目支持C、C++和CUDA编译器（对于汇编语言的支持使用 **`enable_language()`**，而不在这里显式指定）：
+- CMake允许使用指定的编程语言：**[enable_language](https://cmake.org/cmake/help/latest/command/enable_language.html)**
+- CMake中开启汇编文件的编译：类Unix下使用GAS为 `enable_language(ASM)`；Visual Studio下使用MASM为 `enable_language(ASM_MASM)`；在Android Studio中使用为x86架构NASM，为：`enable_language(ASM_NASM)`。
+- CMake在一个项目工程中同时指定当前项目支持C、C++和CUDA编译器（对于汇编语言的支持使用 **`enable_language()`**，而不在这里显式指定），可使用 **[project](https://cmake.org/cmake/help/latest/command/project.html)** 进行指定：
 ```cmake
-PROJECT(project_name C CXX CUDA)
+project(project_name C CXX CUDA)
 ```
 - 通过CMake环境变量设置C语言标准：[CMAKE_C_STANDARD](https://cmake.org/cmake/help/latest/variable/CMAKE_C_STANDARD.html)
 - 通过CMake环境变量设置C++语言标准：[CMAKE_CXX_STANDARD](https://cmake.org/cmake/help/latest/variable/CMAKE_CXX_STANDARD.html)
@@ -93,7 +91,22 @@ PROJECT(project_name C CXX CUDA)
 set(CMAKE_C_STANDARD  11)
 set(CMAKE_CXX_STANDARD  20)
 ```
-
+- CMake添加带有字符串的宏定义： 
+```cmake
+ADD_COMPILE_DEFINITIONS(SOME_DIR="${CMAKE_INSTALL_PREFIX}")
+```
+或是
+```cmake
+ADD_COMPILE_DEFINITIONS(SOME_DIR=\"${CMAKE_INSTALL_PREFIX}\")
+```
+- CMake通过设置CMake环境变量来为所有编译目标间接设置 **位置独立的代码**（**`-fPIC`** 的效果）[CMAKE_POSITION_INDEPENDENT_CODE](https://cmake.org/cmake/help/latest/variable/CMAKE_POSITION_INDEPENDENT_CODE.html)
+- [include_directories](https://cmake.org/cmake/help/latest/command/include_directories.html)（该选项相当于编译选项：**`-I`**）
+- [link_directories](https://cmake.org/cmake/help/latest/command/link_directories.html)（该选项相当于编译选项：**`-L`**）
+- [cmake:设置编译选项的讲究(add_compile_options和CMAKE_CXX_FLAGS的区别)](https://blog.csdn.net/10km/article/details/51731959)
+- [cmake中链接系统标准库](https://blog.csdn.net/ly890700/article/details/72806033)
+- [cmake引入第三方库](https://blog.csdn.net/yuegooxi/article/details/123706146)
+- [如何使用CMake为单个目标编译具有不同选项的不同源文件？](https://www.javaroad.cn/questions/90941)
+- [cmake 中使用环境变量](https://www.cnblogs.com/stdpain/p/13467203.html)
 - CMake给Visual Studio设置环境变量，使用`VS_DEBUGGER_ENVIRONMENT`。具体可参考：[Correct use of VS_DEBUGGER_WORKING_DIRECTORY etc.](http://cmake.3232098.n2.nabble.com/Correct-use-of-VS-DEBUGGER-WORKING-DIRECTORY-etc-td7599386.html)（其中，正确地设置`VS_DEBUGGER_ENVIRONMENT`变量的方式如下所示）
 ```cmake
 set_target_properties(appName PROPERTIES VS_DEBUGGER_WORKING_DIRECTORY "PATH=${CMAKE_INSTALL_PREFIX}/bin;%PATH% \$(LocalDebuggerEnvironment)"
@@ -114,19 +127,6 @@ file(COPY "${CMAKE_SOURCE_DIR}/some_dir/header.h" "${CMAKE_SOURCE_DIR}/another_d
 - [CMAKE_DL_LIBS](https://cmake.org/cmake/help/latest/variable/CMAKE_DL_LIBS.html)
 - [In CMake, how can I test if the compiler is Clang?](https://stackoverflow.com/questions/10046114/in-cmake-how-can-i-test-if-the-compiler-is-clang)
 - [switching between gcc and clang-llvm using cmake](https://stackoverflow.com/questions/7031126/switching-between-gcc-and-clang-llvm-using-cmake)
-- CMake添加带有字符串的宏定义： 
-```cmake
-ADD_COMPILE_DEFINITIONS(SOME_DIR="${CMAKE_INSTALL_PREFIX}")
-```
-或是
-```cmake
-ADD_COMPILE_DEFINITIONS(SOME_DIR=\"${CMAKE_INSTALL_PREFIX}\")
-```
-- [include_directories](https://cmake.org/cmake/help/latest/command/include_directories.html)（该选项相当于编译选项：**`-I`**）
-- [link_directories](https://cmake.org/cmake/help/latest/command/link_directories.html)（该选项相当于编译选项：**`-L`**）
-- [cmake:设置编译选项的讲究(add_compile_options和CMAKE_CXX_FLAGS的区别)](https://blog.csdn.net/10km/article/details/51731959)
-- [cmake中链接系统标准库](https://blog.csdn.net/ly890700/article/details/72806033)
-- [cmake引入第三方库](https://blog.csdn.net/yuegooxi/article/details/123706146)
 - CMake修改项目最终生成文件名的前缀和后缀：`set_target_properties(project_name PROPERTIES PREFIX "prefix")`；`set_target_properties(project_name  PROPERTIES SUFFIX "suffix")`。比如，要把输出文件扩展名改为 **.suf**：`set_target_properties(project_name PROPERTIES SUFFIX ".suf")`。如果当前CMake项目是一个Linux上的动态链接库，并且我们想让生成 .so 文件不带有“lib”前缀，则可以：`set_target_properties(MySharedLib PROPERTIES PREFIX "")`，那么最后将会生成“MySharedLib.so”文件。
 - 用CMake生成 **Eclipse** C/C++项目工程：**`cmake -G"Eclipse CDT4 - Unix Makefiles" -DCMAKE_BUILD_TYPE=Debug ...`**。
 
