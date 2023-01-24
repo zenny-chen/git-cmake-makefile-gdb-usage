@@ -109,6 +109,11 @@ ADD_COMPILE_DEFINITIONS(SOME_DIR=\"${CMAKE_INSTALL_PREFIX}\")
 - [cmake:设置编译选项的讲究(add_compile_options和CMAKE_CXX_FLAGS的区别)](https://blog.csdn.net/10km/article/details/51731959)
 - [cmake中链接系统标准库](https://blog.csdn.net/ly890700/article/details/72806033)
 - [cmake引入第三方库](https://blog.csdn.net/yuegooxi/article/details/123706146)
+- 引用并链接CMake自带的系统库模块（比如：[FindZLIB](https://cmake.org/cmake/help/latest/module/FindZLIB.html)）：
+```cmake
+find_package(ZLIB REQUIRED)
+target_link_libraries(my_module_name  ZLIB::ZLIB)
+```
 - [How to statically link external library by target_link_libraries()?](https://discourse.cmake.org/t/how-to-statically-link-external-library-by-target-link-libraries/1718)
 - [cmake 中使用环境变量](https://www.cnblogs.com/stdpain/p/13467203.html)
 - CMake给Visual Studio设置环境变量，使用`VS_DEBUGGER_ENVIRONMENT`。具体可参考：[Correct use of VS_DEBUGGER_WORKING_DIRECTORY etc.](http://cmake.3232098.n2.nabble.com/Correct-use-of-VS-DEBUGGER-WORKING-DIRECTORY-etc-td7599386.html)（其中，正确地设置`VS_DEBUGGER_ENVIRONMENT`变量的方式如下所示）
