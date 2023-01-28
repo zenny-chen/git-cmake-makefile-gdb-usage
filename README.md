@@ -68,9 +68,9 @@ break set -n main -C "process handle --pass true --stop false SIGSEGV"
 - [\[CMake\] Return value of cmake string find](https://cmake.org/pipermail/cmake/2014-June/057778.html)
 - [cmake构建时指定编译器架构(x86 or x64)](https://www.cnblogs.com/lidabo/p/12017014.html)
 - [cmake命令行生成32位和64位项目](https://www.cnblogs.com/pandamohist/p/13644953.html)
+- [Visual Studio 16 2019](https://cmake.org/cmake/help/latest/generator/Visual%20Studio%2016%202019.html)
 - [CMake平台判断](https://blog.csdn.net/bianchengjingling22/article/details/88810593)
 - [cmake_host_system_information](https://cmake.org/cmake/help/latest/command/cmake_host_system_information.html)（可用于判断当前系统名，比如 **Ubuntu**、**CentOS** 等）
-- [Visual Studio 16 2019](https://cmake.org/cmake/help/latest/generator/Visual%20Studio%2016%202019.html)
 - CMake判定当前是否使用的是MSVC编译器，使用 [MSVC](https://cmake.org/cmake/help/latest/variable/MSVC.html) 这一变量。比如：**`if(MSVC)`**。这里还包含了对 [MSVC_VERSION](https://cmake.org/cmake/help/latest/variable/MSVC_VERSION.html) 变量的介绍。
 - [In CMake, how can I test if the compiler is Clang?](https://stackoverflow.com/questions/10046114/in-cmake-how-can-i-test-if-the-compiler-is-clang)
 - [switching between gcc and clang-llvm using cmake](https://stackoverflow.com/questions/7031126/switching-between-gcc-and-clang-llvm-using-cmake)
