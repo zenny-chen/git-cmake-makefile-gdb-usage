@@ -136,6 +136,29 @@ file(COPY "${CMAKE_SOURCE_DIR}/some_dir/header.h" "${CMAKE_SOURCE_DIR}/another_d
 ```
 - [file\(DOWNLOAD\)](https://cmake.org/cmake/help/latest/command/file.html#download)
 - CMake修改项目最终生成文件名的前缀和后缀：`set_target_properties(project_name PROPERTIES PREFIX "prefix")`；`set_target_properties(project_name  PROPERTIES SUFFIX "suffix")`。比如，要把输出文件扩展名改为 **.suf**：`set_target_properties(project_name PROPERTIES SUFFIX ".suf")`。如果当前CMake项目是一个Linux上的动态链接库，并且我们想让生成 .so 文件不带有“lib”前缀，则可以：`set_target_properties(MySharedLib PROPERTIES PREFIX "")`，那么最后将会生成“MySharedLib.so”文件。
+- CMake将 **`.h.in`** 文件配置为正式的 **`.h`** 文件：[configure_file](https://cmake.org/cmake/help/latest/command/configure_file.html)
+
+例如：有以下 **.h.in** 文件：
+```c
+#define MATERIALX_MAJOR_VERSION @MATERIALX_MAJOR_VERSION@
+#define MATERIALX_MINOR_VERSION @MATERIALX_MINOR_VERSION@
+#define MATERIALX_BUILD_VERSION @MATERIALX_BUILD_VERSION@
+```
+经过此 **CMakeLists.txt** 文件处理之后：
+```cmake
+set(MATERIALX_MAJOR_VERSION 1)
+set(MATERIALX_MINOR_VERSION 38)
+set(MATERIALX_BUILD_VERSION 7)
+
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/Generated.h.in ${CMAKE_CURRENT_BINARY_DIR}/Generated.h)
+```
+最后生成以下 **.h** 文件：
+```c
+#define MATERIALX_MAJOR_VERSION 1
+#define MATERIALX_MINOR_VERSION 38
+#define MATERIALX_BUILD_VERSION 7
+```
+
 - 用CMake生成 **Eclipse** C/C++项目工程：**`cmake -G"Eclipse CDT4 - Unix Makefiles" -DCMAKE_BUILD_TYPE=Debug ...`**。
 
 关于上述命令中 **`Eclipse CDT4`** 的进一步描述：
