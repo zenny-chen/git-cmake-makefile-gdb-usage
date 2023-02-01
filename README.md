@@ -66,9 +66,23 @@ break set -n main -C "process handle --pass true --stop false SIGSEGV"
 - [if](https://cmake.org/cmake/help/latest/command/if.html)
 - [string](https://cmake.org/cmake/help/latest/command/string.html)
 - [\[CMake\] Return value of cmake string find](https://cmake.org/pipermail/cmake/2014-June/057778.html)
+- CMake用于输出消息，即打印字符串：[message](https://cmake.org/cmake/help/latest/command/message.html)（其中，常用的模式有：**`STATUS`**、**`WARNING`** 和 **`FATAL_ERROR`**）
 - [cmake构建时指定编译器架构(x86 or x64)](https://www.cnblogs.com/lidabo/p/12017014.html)
 - [cmake命令行生成32位和64位项目](https://www.cnblogs.com/pandamohist/p/13644953.html)
 - [Visual Studio 16 2019](https://cmake.org/cmake/help/latest/generator/Visual%20Studio%2016%202019.html)
+- 用CMake生成 **Eclipse** C/C++项目工程：**`cmake -G "Eclipse CDT4 - Unix Makefiles" -DCMAKE_BUILD_TYPE=Debug ...`**。
+
+关于上述命令中 **`Eclipse CDT4`** 的进一步描述：
+```
+When I worked in the CDT generator I wasn't (and still am not) familiar with the release cycle or the design constraints of the CDT, 
+        hence the name includes CDT4 thinking it might not be compatible with the future versions. 
+
+However, as another user points out people have successfully used it with CDT 5/6.
+
+So, as long as the CDT doesn't break the xml format for external makefiles you should be able to use it.
+```
+
+- [CMAKE_ECLIPSE_VERSION](https://cmake.org/cmake/help/latest/variable/CMAKE_ECLIPSE_VERSION.html)
 - [CMake平台判断](https://blog.csdn.net/bianchengjingling22/article/details/88810593)
 - [cmake_host_system_information](https://cmake.org/cmake/help/latest/command/cmake_host_system_information.html)（可用于判断当前系统名，比如 **Ubuntu**、**CentOS** 等）
 - CMake判定当前是否使用的是MSVC编译器，使用 [MSVC](https://cmake.org/cmake/help/latest/variable/MSVC.html) 这一变量。比如：**`if(MSVC)`**。这里还包含了对 [MSVC_VERSION](https://cmake.org/cmake/help/latest/variable/MSVC_VERSION.html) 变量的介绍。
@@ -117,6 +131,7 @@ target_link_libraries(my_module_name  ZLIB::ZLIB)
 ```
 - 要搜索 **`find_package`** 的路径变量需要使用：[CMAKE_MODULE_PATH](https://cmake.org/cmake/help/latest/variable/CMAKE_MODULE_PATH.html)
 - [How to statically link external library by target_link_libraries()?](https://discourse.cmake.org/t/how-to-statically-link-external-library-by-target-link-libraries/1718)
+- CMake中要包含其他用于CMake的文件或CMake模块：[include](https://cmake.org/cmake/help/latest/command/include.html)（比如：**`include(additional_config.cmake)`**）
 - [cmake 中使用环境变量](https://www.cnblogs.com/stdpain/p/13467203.html)
 - CMake给Visual Studio设置环境变量，使用`VS_DEBUGGER_ENVIRONMENT`。具体可参考：[Correct use of VS_DEBUGGER_WORKING_DIRECTORY etc.](http://cmake.3232098.n2.nabble.com/Correct-use-of-VS-DEBUGGER-WORKING-DIRECTORY-etc-td7599386.html)（其中，正确地设置`VS_DEBUGGER_ENVIRONMENT`变量的方式如下所示）
 ```cmake
@@ -159,20 +174,6 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/Generated.h.in ${CMAKE_CURRENT_BINARY
 #define MATERIALX_BUILD_VERSION 7
 ```
 
-- CMake中要包含其他用于CMake的文件或CMake模块：[include](https://cmake.org/cmake/help/latest/command/include.html)（比如：**`include(additional_config.cmake)`**）
-- 用CMake生成 **Eclipse** C/C++项目工程：**`cmake -G"Eclipse CDT4 - Unix Makefiles" -DCMAKE_BUILD_TYPE=Debug ...`**。
-
-关于上述命令中 **`Eclipse CDT4`** 的进一步描述：
-```
-When I worked in the CDT generator I wasn't (and still am not) familiar with the release cycle or the design constraints of the CDT, 
-        hence the name includes CDT4 thinking it might not be compatible with the future versions. 
-
-However, as another user points out people have successfully used it with CDT 5/6.
-
-So, as long as the CDT doesn't break the xml format for external makefiles you should be able to use it.
-```
-
-- [CMAKE_ECLIPSE_VERSION](https://cmake.org/cmake/help/latest/variable/CMAKE_ECLIPSE_VERSION.html)
 - [FindCUDAToolkit](https://cmake.org/cmake/help/latest/module/FindCUDAToolkit.html)
 - [CMAKE_CUDA_RUNTIME_LIBRARY](https://cmake.org/cmake/help/latest/variable/CMAKE_CUDA_RUNTIME_LIBRARY.html)
 - CMake中设置CUDA额外编译选项：`TARGET_COMPILE_OPTIONS(project_name PRIVATE $<$<COMPILE_LANGUAGE:CUDA>: --use_fast_math --gpu-architecture=sm35>)`
