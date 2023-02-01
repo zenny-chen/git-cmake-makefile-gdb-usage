@@ -115,7 +115,7 @@ ADD_COMPILE_DEFINITIONS(SOME_DIR=\"${CMAKE_INSTALL_PREFIX}\")
 find_package(ZLIB REQUIRED)
 target_link_libraries(my_module_name  ZLIB::ZLIB)
 ```
-- 要搜索 **`find_package`** 的路径变量需要使用：[CMAKE_MODULE_PATH](https://cmake.org/cmake/help/latest/variable/CMAKE_MODULE_PATH.html)（比如：**`include(additional_config.cmake)`**）
+- 要搜索 **`find_package`** 的路径变量需要使用：[CMAKE_MODULE_PATH](https://cmake.org/cmake/help/latest/variable/CMAKE_MODULE_PATH.html)
 - [How to statically link external library by target_link_libraries()?](https://discourse.cmake.org/t/how-to-statically-link-external-library-by-target-link-libraries/1718)
 - [cmake 中使用环境变量](https://www.cnblogs.com/stdpain/p/13467203.html)
 - CMake给Visual Studio设置环境变量，使用`VS_DEBUGGER_ENVIRONMENT`。具体可参考：[Correct use of VS_DEBUGGER_WORKING_DIRECTORY etc.](http://cmake.3232098.n2.nabble.com/Correct-use-of-VS-DEBUGGER-WORKING-DIRECTORY-etc-td7599386.html)（其中，正确地设置`VS_DEBUGGER_ENVIRONMENT`变量的方式如下所示）
@@ -159,7 +159,7 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/Generated.h.in ${CMAKE_CURRENT_BINARY
 #define MATERIALX_BUILD_VERSION 7
 ```
 
-- CMake中要包含其他用于CMake的文件或CMake模块：[include](https://cmake.org/cmake/help/latest/command/include.html)
+- CMake中要包含其他用于CMake的文件或CMake模块：[include](https://cmake.org/cmake/help/latest/command/include.html)（比如：**`include(additional_config.cmake)`**）
 - 用CMake生成 **Eclipse** C/C++项目工程：**`cmake -G"Eclipse CDT4 - Unix Makefiles" -DCMAKE_BUILD_TYPE=Debug ...`**。
 
 关于上述命令中 **`Eclipse CDT4`** 的进一步描述：
