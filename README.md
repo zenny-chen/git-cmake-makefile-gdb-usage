@@ -159,6 +159,7 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/Generated.h.in ${CMAKE_CURRENT_BINARY
 #define MATERIALX_BUILD_VERSION 7
 ```
 
+- CMake中要包含其他用于CMake的文件或CMake模块：[include](https://cmake.org/cmake/help/latest/command/include.html)
 - 用CMake生成 **Eclipse** C/C++项目工程：**`cmake -G"Eclipse CDT4 - Unix Makefiles" -DCMAKE_BUILD_TYPE=Debug ...`**。
 
 关于上述命令中 **`Eclipse CDT4`** 的进一步描述：
