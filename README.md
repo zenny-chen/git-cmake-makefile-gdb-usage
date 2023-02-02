@@ -181,7 +181,7 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/Generated.h.in ${CMAKE_CURRENT_BINARY
 ```cmake
 SET_TARGET_PROPERTIES(project_name PROPERTIES INTERFACE_LINK_LIBRARIES "" CUDA_SEPARABLE_COMPILATION ON)
 ```
-- [CMAKE_CUDA_ARCHITECTURES](https://cmake.org/cmake/help/latest/variable/CMAKE_CUDA_ARCHITECTURES.html#variable:CMAKE_CUDA_ARCHITECTURES)
+- 为当前项目的CUDA设定所支持的架构：[CMAKE_CUDA_ARCHITECTURES](https://cmake.org/cmake/help/latest/variable/CMAKE_CUDA_ARCHITECTURES.html)。在设定 **`CMAKE_CUDA_ARCHITECTURES`** 时，必须将该命令放在当前项目根目录下的 **CMakeLists.txt** 文件中设置；或是通过CMake的环境变量传入；而不能放在子项目目录中 **CMakeLists.txt** 文件里设置。如果我们就设置一个架构，比如虚拟架构与实机架构都是75，那么我们可以直接使用：`set(CMAKE_CUDA_ARCHITECTURES  75)`。如果我们要设置多个架构可以这么写：`set(CMAKE_CUDA_ARCHITECTURES  "60;70;75")`。
 - [CMAKE_CUDA_RUNTIME_LIBRARY](https://cmake.org/cmake/help/latest/variable/CMAKE_CUDA_RUNTIME_LIBRARY.html)
 - CMake中调用其他进程获取相应字符串值：
 ```cmake
