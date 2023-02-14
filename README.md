@@ -130,7 +130,7 @@ find_package(ZLIB REQUIRED)
 target_link_libraries(my_module_name  ZLIB::ZLIB)
 ```
 - 要搜索 **`find_package`** 的路径变量需要使用：[CMAKE_MODULE_PATH](https://cmake.org/cmake/help/latest/variable/CMAKE_MODULE_PATH.html)
-- [FindBoost](https://cmake.org/cmake/help/latest/module/FindBoost.html)（指定定制的boost库include路径使用 **`Boost_INCLUDE_DIR`**；指定ding'zhdingzhi的boost库的lib路径使用：**`Boost_LIBRARY_DIR_RELEASE`** 和 **`Boost_LIBRARY_DIR_DEBUG`**）
+- [FindBoost](https://cmake.org/cmake/help/latest/module/FindBoost.html)（指定定制的boost库include路径使用 **`Boost_INCLUDE_DIR`**；指定定制的boost库的lib路径使用：**`Boost_LIBRARY_DIR_RELEASE`** 和 **`Boost_LIBRARY_DIR_DEBUG`**）
 - [How to statically link external library by target_link_libraries()?](https://discourse.cmake.org/t/how-to-statically-link-external-library-by-target-link-libraries/1718)
 - 显式指定连接器使用哪种工具：[LINKER_LANGUAGE](https://cmake.org/cmake/help/latest/prop_tgt/LINKER_LANGUAGE.html)。比如在某些Linux系统中，C语言项目要连接含有C++标准库的一些动态链接库，可能需要使用 **`g++`** 或 **`clang++`** 工具链，而不是 **`gcc`** 或 **`clang`**。此时我们可以设置 **`LINKER_LANGUAGE`** 并最好再加上 **`libstdc++`** 的连接。比如：
 ```cmake
