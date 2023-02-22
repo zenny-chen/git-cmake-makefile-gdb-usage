@@ -135,13 +135,14 @@ target_link_libraries(my_module_name  ZLIB::ZLIB)
 - 要搜索 **`find_package`** 的路径变量需要使用：[CMAKE_MODULE_PATH](https://cmake.org/cmake/help/latest/variable/CMAKE_MODULE_PATH.html)
 - [FindBoost](https://cmake.org/cmake/help/latest/module/FindBoost.html)（指定定制的boost库include路径使用 **`Boost_INCLUDE_DIR`**；指定定制的boost库的lib路径使用：**`Boost_LIBRARY_DIR_RELEASE`** 和 **`Boost_LIBRARY_DIR_DEBUG`**）
 - [Boost library](https://cliutils.gitlab.io/modern-cmake/chapters/packages/Boost.html)
+- CMake中要包含其他用于CMake的文件或CMake模块：[include](https://cmake.org/cmake/help/latest/command/include.html)（比如：**`include(additional_config.cmake)`**）
 - [How to statically link external library by target_link_libraries()?](https://discourse.cmake.org/t/how-to-statically-link-external-library-by-target-link-libraries/1718)
 - 显式指定连接器使用哪种工具：[LINKER_LANGUAGE](https://cmake.org/cmake/help/latest/prop_tgt/LINKER_LANGUAGE.html)。比如在某些Linux系统中，C语言项目要连接含有C++标准库的一些动态链接库，可能需要使用 **`g++`** 或 **`clang++`** 工具链，而不是 **`gcc`** 或 **`clang`**。此时我们可以设置 **`LINKER_LANGUAGE`** 并最好再加上 **`libstdc++`** 的连接。比如：
 ```cmake
 set(LINKER_LANGUAGE  CXX)
 target_link_libraries(project_name  your_cpp_lib  stdc++)
 ```
-- CMake中要包含其他用于CMake的文件或CMake模块：[include](https://cmake.org/cmake/help/latest/command/include.html)（比如：**`include(additional_config.cmake)`**）
+- MSVC中设置运行时库类型（[/MD, /MT, /LD \(Use Run-Time Library\)](https://learn.microsoft.com/en-us/cpp/build/reference/md-mt-ld-use-run-time-library)）：[CMAKE_MSVC_RUNTIME_LIBRARY](https://cmake.org/cmake/help/latest/variable/CMAKE_MSVC_RUNTIME_LIBRARY.html)
 - [cmake 中使用环境变量](https://www.cnblogs.com/stdpain/p/13467203.html)
 - CMake给Visual Studio设置环境变量，使用`VS_DEBUGGER_ENVIRONMENT`。具体可参考：[Correct use of VS_DEBUGGER_WORKING_DIRECTORY etc.](http://cmake.3232098.n2.nabble.com/Correct-use-of-VS-DEBUGGER-WORKING-DIRECTORY-etc-td7599386.html)（其中，正确地设置`VS_DEBUGGER_ENVIRONMENT`变量的方式如下所示）
 ```cmake
