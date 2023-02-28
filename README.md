@@ -121,7 +121,7 @@ ADD_COMPILE_DEFINITIONS(SOME_DIR="${CMAKE_INSTALL_PREFIX}")
 ADD_COMPILE_DEFINITIONS(SOME_DIR=\"${CMAKE_INSTALL_PREFIX}\")
 ```
 - CMake通过设置CMake环境变量来为所有编译目标间接设置 **位置独立的代码**（**`-fPIC`** 的效果）[CMAKE_POSITION_INDEPENDENT_CODE](https://cmake.org/cmake/help/latest/variable/CMAKE_POSITION_INDEPENDENT_CODE.html)
-- CMake设置GCC中的**`-fvisibility=`**：[CMAKE_\<LANG\>_VISIBILITY_PRESET](https://cmake.org/cmake/help/latest/variable/CMAKE_LANG_VISIBILITY_PRESET.html)。比如：
+- CMake设置GCC中的 **`-fvisibility=`**：[CMAKE_\<LANG\>_VISIBILITY_PRESET](https://cmake.org/cmake/help/latest/variable/CMAKE_LANG_VISIBILITY_PRESET.html)。比如：
 ```cmake
 set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 set(CMAKE_C_VISIBILITY_PRESET default)
