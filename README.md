@@ -121,6 +121,11 @@ ADD_COMPILE_DEFINITIONS(SOME_DIR="${CMAKE_INSTALL_PREFIX}")
 ADD_COMPILE_DEFINITIONS(SOME_DIR=\"${CMAKE_INSTALL_PREFIX}\")
 ```
 - CMake通过设置CMake环境变量来为所有编译目标间接设置 **位置独立的代码**（**`-fPIC`** 的效果）[CMAKE_POSITION_INDEPENDENT_CODE](https://cmake.org/cmake/help/latest/variable/CMAKE_POSITION_INDEPENDENT_CODE.html)
+- CMake设置GCC中的**`-fvisibility=`**：[CMAKE_\<LANG\>_VISIBILITY_PRESET](https://cmake.org/cmake/help/latest/variable/CMAKE_LANG_VISIBILITY_PRESET.html)。比如：
+```cmake
+set(CMAKE_CXX_VISIBILITY_PRESET hidden)
+set(CMAKE_C_VISIBILITY_PRESET default)
+```
 - 基于CMake添加 **`-ldl`** （包含 **`dlopen`** 以及 **`dlclose`** 等动态加载符号的库）的变量： [CMAKE_DL_LIBS](https://cmake.org/cmake/help/latest/variable/CMAKE_DL_LIBS.html)（对该变量的具体使用可参考：[CMAKE_DL_LIBS](https://discourse.cmake.org/t/cmake-dl-libs/1159)）
 - [include_directories](https://cmake.org/cmake/help/latest/command/include_directories.html)（该选项相当于编译选项：**`-I`**）
 - [link_directories](https://cmake.org/cmake/help/latest/command/link_directories.html)（该选项相当于编译选项：**`-L`**）
