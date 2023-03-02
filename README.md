@@ -68,8 +68,9 @@ sudo sh cmake-<version>-linux-x86_64.sh  --prefix=/usr/local/  --exclude-subdir
 ```cmake
 # 这里所使用的 -j4 是指：
 # 在cmake完成代码构建的生成之后， 在使用 make 命令时所指定的多线程个数
-cmake -S src_dir -B build_dir -j4
+cmake -S src_dir -B build_dir --install install_dir -j4
 ```
+- CMake指定安装目录：[CMAKE_INSTALL_PREFIX](https://cmake.org/cmake/help/latest/variable/CMAKE_INSTALL_PREFIX.html)
 - 判定CMake中某个符号是否没有被定义使用：`if(NOT DEFINED CMAKE_BUILD_TYPE)`。可参考：[Why if\(DEFINED <variable>\) doesn't work in cmake? \[duplicate\]](https://stackoverflow.com/questions/51621228/why-ifdefined-variable-doesnt-work-in-cmake)
 - [If value not equal in cmake 2.8](https://stackoverflow.com/questions/11741325/if-value-not-equal-in-cmake-2-8)（使用`if(NOT <expression>)`时，里面的 **`NOT`** 必须是全大写）
 - [if](https://cmake.org/cmake/help/latest/command/if.html)
