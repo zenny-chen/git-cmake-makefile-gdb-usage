@@ -64,6 +64,12 @@ break set -n main -C "process handle --pass true --stop false SIGSEGV"
 ```shell
 sudo sh cmake-<version>-linux-x86_64.sh  --prefix=/usr/local/  --exclude-subdir
 ```
+- CMake命令行概述：[cmake(1)](https://cmake.org/cmake/help/latest/manual/cmake.1.html)  比如：
+```cmake
+# 这里所使用的 -j4 是指：
+# 在cmake完成代码构建的生成之后， 在使用 make 命令时所指定的多线程个数
+cmake -S src_dir -B build_dir -j4
+```
 - 判定CMake中某个符号是否没有被定义使用：`if(NOT DEFINED CMAKE_BUILD_TYPE)`。可参考：[Why if\(DEFINED <variable>\) doesn't work in cmake? \[duplicate\]](https://stackoverflow.com/questions/51621228/why-ifdefined-variable-doesnt-work-in-cmake)
 - [If value not equal in cmake 2.8](https://stackoverflow.com/questions/11741325/if-value-not-equal-in-cmake-2-8)（使用`if(NOT <expression>)`时，里面的 **`NOT`** 必须是全大写）
 - [if](https://cmake.org/cmake/help/latest/command/if.html)
