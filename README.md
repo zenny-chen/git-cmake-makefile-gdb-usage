@@ -166,6 +166,11 @@ target_link_libraries(my_module_name  ZLIB::ZLIB)
 set(LINKER_LANGUAGE  CXX)
 target_link_libraries(project_name  your_cpp_lib  stdc++)
 ```
+- CMake中指定连接器选项可使用 [LINK_FLAGS](https://cmake.org/cmake/help/latest/prop_tgt/LINK_FLAGS.html) 这一 **`PROPERTY`**。比如：
+```cmake
+set_target_properties(target  PROPERTIES LINK_FLAGS  "-s")    # Linux GCC
+set_target_properties(target  PROPERTIES LINK_FLAGS  "/OPT:ref  /OPT:ICF")    # Windows MSVC
+```
 - [Selecting Static or Shared Libraries](https://cmake.org/cmake/help/latest/guide/tutorial/Selecting%20Static%20or%20Shared%20Libraries.html)
 - MSVC中设置运行时库类型（[/MD, /MT, /LD \(Use Run-Time Library\)](https://learn.microsoft.com/en-us/cpp/build/reference/md-mt-ld-use-run-time-library)）：[CMAKE_MSVC_RUNTIME_LIBRARY](https://cmake.org/cmake/help/latest/variable/CMAKE_MSVC_RUNTIME_LIBRARY.html)
 - [cmake 中使用环境变量](https://www.cnblogs.com/stdpain/p/13467203.html)
