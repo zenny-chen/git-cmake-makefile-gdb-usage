@@ -120,6 +120,7 @@ project(project_name C CXX CUDA)
 set(CMAKE_C_STANDARD  11)
 set(CMAKE_CXX_STANDARD  20)
 ```
+- **CMakeLists.txt** 文件中，[cmake_minimum_required](https://cmake.org/cmake/help/latest/command/cmake_minimum_required.html) 需要放在文件最开始，即倘若当前 **CMakeLists.txt** 文件包含了 **`project`** 语句，则需要放在该语句的上面；否则可能会引发CMake过程中的warning。
 - CMake添加带有字符串的宏定义： 
 ```cmake
 ADD_COMPILE_DEFINITIONS(SOME_DIR="${CMAKE_INSTALL_PREFIX}")
