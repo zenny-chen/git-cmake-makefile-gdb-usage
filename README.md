@@ -95,6 +95,7 @@ So, as long as the CDT doesn't break the xml format for external makefiles you s
 ```
 
 - [CMAKE_ECLIPSE_VERSION](https://cmake.org/cmake/help/latest/variable/CMAKE_ECLIPSE_VERSION.html)
+- [CMake error no CMAKE_C_COMPILER could be found using Xcode and GLFW](https://stackoverflow.com/questions/41380900/cmake-error-no-cmake-c-compiler-could-be-found-using-xcode-and-glfw)
 - [CMake平台判断](https://blog.csdn.net/bianchengjingling22/article/details/88810593)
 - [cmake_host_system_information](https://cmake.org/cmake/help/latest/command/cmake_host_system_information.html)（可用于判断当前系统名，比如 **Ubuntu**、**CentOS** 等）
 - CMake判定当前是否使用的是MSVC编译器，使用 [MSVC](https://cmake.org/cmake/help/latest/variable/MSVC.html) 这一变量。比如：**`if(MSVC)`**。这里还包含了对 [MSVC_VERSION](https://cmake.org/cmake/help/latest/variable/MSVC_VERSION.html) 变量的介绍。
