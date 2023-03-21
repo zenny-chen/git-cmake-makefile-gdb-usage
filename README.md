@@ -148,6 +148,7 @@ set_target_properties(foo_library
 - 基于CMake添加 **`-ldl`** （包含 **`dlopen`** 以及 **`dlclose`** 等动态加载符号的库）的变量： [CMAKE_DL_LIBS](https://cmake.org/cmake/help/latest/variable/CMAKE_DL_LIBS.html)（对该变量的具体使用可参考：[CMAKE_DL_LIBS](https://discourse.cmake.org/t/cmake-dl-libs/1159)）
 - [include_directories](https://cmake.org/cmake/help/latest/command/include_directories.html)（该选项相当于编译选项：**`-I`**）
 - [link_directories](https://cmake.org/cmake/help/latest/command/link_directories.html)（该选项相当于编译选项：**`-L`**）
+- [link_libraries](https://cmake.org/cmake/help/latest/command/link_libraries.html)（为后续所有目标添加链接库，并可用于指定Debug或Release模式）
 - [cmake:设置编译选项的讲究(add_compile_options和CMAKE_CXX_FLAGS的区别)](https://blog.csdn.net/10km/article/details/51731959)
 - [cmake中链接系统标准库](https://blog.csdn.net/ly890700/article/details/72806033)
 - [cmake引入第三方库](https://blog.csdn.net/yuegooxi/article/details/123706146)
