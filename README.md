@@ -76,6 +76,7 @@ cmake -S src_dir -B build_dir --install-prefix install_dir -j4
 - [If value not equal in cmake 2.8](https://stackoverflow.com/questions/11741325/if-value-not-equal-in-cmake-2-8)（使用`if(NOT <expression>)`时，里面的 **`NOT`** 必须是全大写）
 - [if](https://cmake.org/cmake/help/latest/command/if.html)
 - [string](https://cmake.org/cmake/help/latest/command/string.html)
+- CMake **`string(TOUPPER <string1> <output variable>)`** 的使用：[CMake Regex to convert lower case to upper case](https://stackoverflow.com/questions/4905340/cmake-regex-to-convert-lower-case-to-upper-case)
 - [\[CMake\] Return value of cmake string find](https://cmake.org/pipermail/cmake/2014-June/057778.html)
 - CMake用于输出消息，即打印字符串：[message](https://cmake.org/cmake/help/latest/command/message.html)（其中，常用的模式有：**`STATUS`**、**`WARNING`** 和 **`FATAL_ERROR`**）
 - [cmake构建时指定编译器架构(x86 or x64)](https://www.cnblogs.com/lidabo/p/12017014.html)
