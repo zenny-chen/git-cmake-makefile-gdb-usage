@@ -174,7 +174,7 @@ target_link_libraries(project_name  your_cpp_lib  stdc++)
 set_target_properties(target  PROPERTIES LINK_FLAGS  "-s")    # Linux GCC
 set_target_properties(target  PROPERTIES LINK_FLAGS  "/OPT:ref  /OPT:ICF")    # Windows MSVC
 ```
-- CMake对可执行文件目标设置连接器选项：[CMAKE_EXE_LINKER_FLAGS_<CONFIG>](https://cmake.org/cmake/help/latest/variable/CMAKE_EXE_LINKER_FLAGS_CONFIG.html)
+- CMake对可执行文件目标设置连接器选项：[CMAKE_EXE_LINKER_FLAGS_\<CONFIG\>](https://cmake.org/cmake/help/latest/variable/CMAKE_EXE_LINKER_FLAGS_CONFIG.html)
 ```cmake
 # Add '/DEBUG' option to all the build targets
 set(CMAKE_EXE_LINKER_FLAGS  "${CMAKE_EXE_LINKER_FLAGS} /DEBUG")
@@ -182,7 +182,7 @@ set(CMAKE_EXE_LINKER_FLAGS  "${CMAKE_EXE_LINKER_FLAGS} /DEBUG")
 # Add '-g' option only to DEBUG build target
 set(CMAKE_EXE_LINKER_FLAGS_DEBUG  "${CMAKE_EXE_LINKER_FLAGS_DEBUG} -g")
 ```
-- CMake对动态连接库目标设置连接器选项：[CMAKE_SHARED_LINKER_FLAGS_<CONFIG>](https://cmake.org/cmake/help/latest/variable/CMAKE_SHARED_LINKER_FLAGS_CONFIG.html)
+- CMake对动态连接库目标设置连接器选项：[CMAKE_SHARED_LINKER_FLAGS_\<CONFIG\>](https://cmake.org/cmake/help/latest/variable/CMAKE_SHARED_LINKER_FLAGS_CONFIG.html)
 ```cmake
 # Add '/DEBUG' option to all the build targets
 set(CMAKE_SHARED_LINKER_FLAGS  "${CMAKE_SHARED_LINKER_FLAGS} /DEBUG")
