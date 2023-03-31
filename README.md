@@ -174,6 +174,22 @@ target_link_libraries(project_name  your_cpp_lib  stdc++)
 set_target_properties(target  PROPERTIES LINK_FLAGS  "-s")    # Linux GCC
 set_target_properties(target  PROPERTIES LINK_FLAGS  "/OPT:ref  /OPT:ICF")    # Windows MSVC
 ```
+- CMake对可执行文件目标设置连接器选项：[CMAKE_EXE_LINKER_FLAGS_<CONFIG>](https://cmake.org/cmake/help/latest/variable/CMAKE_EXE_LINKER_FLAGS_CONFIG.html)
+```cmake
+# Add '/DEBUG' option to all the build targets
+set(CMAKE_EXE_LINKER_FLAGS  "${CMAKE_EXE_LINKER_FLAGS} /DEBUG")
+
+# Add '-g' option only to DEBUG build target
+set(CMAKE_EXE_LINKER_FLAGS_DEBUG  "${CMAKE_EXE_LINKER_FLAGS_DEBUG} -g")
+```
+- CMake对动态连接库目标设置连接器选项：[CMAKE_SHARED_LINKER_FLAGS_<CONFIG>](https://cmake.org/cmake/help/latest/variable/CMAKE_SHARED_LINKER_FLAGS_CONFIG.html)
+```cmake
+# Add '/DEBUG' option to all the build targets
+set(CMAKE_SHARED_LINKER_FLAGS  "${CMAKE_SHARED_LINKER_FLAGS} /DEBUG")
+
+# Add '-g' option only to DEBUG build target
+set(CMAKE_SHARED_LINKER_FLAGS_DEBUG  "${CMAKE_SHARED_LINKER_FLAGS_DEBUG} -g")
+```
 - [Selecting Static or Shared Libraries](https://cmake.org/cmake/help/latest/guide/tutorial/Selecting%20Static%20or%20Shared%20Libraries.html)
 - MSVC中设置运行时库类型（[/MD, /MT, /LD \(Use Run-Time Library\)](https://learn.microsoft.com/en-us/cpp/build/reference/md-mt-ld-use-run-time-library)）：[CMAKE_MSVC_RUNTIME_LIBRARY](https://cmake.org/cmake/help/latest/variable/CMAKE_MSVC_RUNTIME_LIBRARY.html)
 - [cmake 中使用环境变量](https://www.cnblogs.com/stdpain/p/13467203.html)
@@ -181,9 +197,9 @@ set_target_properties(target  PROPERTIES LINK_FLAGS  "/OPT:ref  /OPT:ICF")    # 
 ```cmake
 set_target_properties(appName PROPERTIES VS_DEBUGGER_WORKING_DIRECTORY "PATH=${CMAKE_INSTALL_PREFIX}/bin;%PATH% \$(LocalDebuggerEnvironment)"
 ```
-- CMake为MSVC安装pdb调试文件：
+- CMake为MSVC安装pdb调试文件到目标 **bin** 目录：
 ```cmake
-install(FILES $<TARGET_PDB_FILE:libname> DESTINATION bin)
+install(FILES $<TARGET_PDB_FILE:project_name> DESTINATION bin)
 ```
 - 在项目安装时，将指定文件重命名然后复制到指定目标路径：
 ```cmake
