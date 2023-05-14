@@ -78,6 +78,7 @@ cmake -S src_dir -B build_dir --install-prefix install_dir -j4
 - [string](https://cmake.org/cmake/help/latest/command/string.html)
 - CMake **`string(TOUPPER <string1> <output variable>)`** 的使用：[CMake Regex to convert lower case to upper case](https://stackoverflow.com/questions/4905340/cmake-regex-to-convert-lower-case-to-upper-case)
 - [\[CMake\] Return value of cmake string find](https://cmake.org/pipermail/cmake/2014-June/057778.html)
+- [Back To Basics: CMake Functions and Macros](https://medium.com/@back_to_basics/cmake-functions-and-macros-22293041519f)
 - CMake用于输出消息，即打印字符串：[message](https://cmake.org/cmake/help/latest/command/message.html)（其中，常用的模式有：**`STATUS`**、**`WARNING`** 和 **`FATAL_ERROR`**）
 - [cmake构建时指定编译器架构(x86 or x64)](https://www.cnblogs.com/lidabo/p/12017014.html)
 - [cmake命令行生成32位和64位项目](https://www.cnblogs.com/pandamohist/p/13644953.html)
