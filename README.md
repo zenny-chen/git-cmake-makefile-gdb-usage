@@ -133,6 +133,7 @@ ADD_COMPILE_DEFINITIONS(SOME_DIR="${CMAKE_INSTALL_PREFIX}")
 ADD_COMPILE_DEFINITIONS(SOME_DIR=\"${CMAKE_INSTALL_PREFIX}\")
 ```
 - CMake对外部提供可选项：[option](https://cmake.org/cmake/help/latest/command/option.html)
+- CMake修改 **`CMAKE_CXX_FLAGS`** 等编译选项中的默认优化选项：[Optimize in CMake by default](https://9to5answer.com/optimize-in-cmake-by-default)（见 **Solution 3**）
 - CMake通过设置CMake环境变量来为所有编译目标间接设置 **位置独立的代码**（**`-fPIC`** 的效果）[CMAKE_POSITION_INDEPENDENT_CODE](https://cmake.org/cmake/help/latest/variable/CMAKE_POSITION_INDEPENDENT_CODE.html)
 - CMake设置GCC中的 **`-fvisibility=`**：[CMAKE_\<LANG\>_VISIBILITY_PRESET](https://cmake.org/cmake/help/latest/variable/CMAKE_LANG_VISIBILITY_PRESET.html)。比如：
 ```cmake
