@@ -106,6 +106,7 @@ So, as long as the CDT doesn't break the xml format for external makefiles you s
 - [如何使用CMake为单个目标编译具有不同选项的不同源文件？](https://www.javaroad.cn/questions/90941)
 - CMake对当前使用哪种编译器的通用判定方法：[CMAKE_\<LANG\>_COMPILER_ID](https://cmake.org/cmake/help/latest/variable/CMAKE_LANG_COMPILER_ID.html)（这里的 **`<LANG>`** 可以是：[CMAKE_\<LANG\>_CLANG_TIDY](https://cmake.org/cmake/help/latest/variable/CMAKE_LANG_CLANG_TIDY.html)）。Google整理出来的当前CMake支持的 **`<LANG>`** 的列表：
 > Supported languages include C , CXX (i.e. C++), CUDA , OBJC (i.e. Objective-C), OBJCXX , Fortran , HIP , ISPC , and ASM . By default C and CXX are enabled if no language options are given.
+- [CMake ISPC](https://cmake.org/cmake/help/latest/envvar/ISPC.html)
 - [CMAKE添加编译选项](https://blog.csdn.net/qinglongzhan/article/details/80743731)（汇编语言的编译选项的环境变量：`CMAKE_ASM_FLAGS`）
 - [CMAKE_BUILD_TYPE](https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html#variable:CMAKE_BUILD_TYPE)（Debug, Release, RelWithDebInfo and MinSizeRel）
 - 编译选项针对不同构建类型的配置：`CMAKE_C_FLAGS_DEBUG`、`CMAKE_C_FLAGS_RELEASE`、`CMAKE_C_FLAGS_RELWITHDEBINFO`。
