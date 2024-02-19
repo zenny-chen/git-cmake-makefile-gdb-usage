@@ -60,6 +60,7 @@ break set -n main -C "process handle --pass true --stop false SIGSEGV"
 - [CMAKE最全实战(1)](https://www.toutiao.com/i6858063275733713416/)
 - [CMAKE最全实战(2)](https://www.toutiao.com/a6859561394904236547/)
 - [Android NDK 开发之 CMake 必知必会](https://blog.csdn.net/zhying719/article/details/82657519)
+- [【CMake 语法】(4) CMake 命令、命令参数、转义序列](https://blog.csdn.net/m0_57845572/article/details/118520228)
 - Linux系统下安装CMake：
 ```shell
 sudo sh cmake-<version>-linux-x86_64.sh  --prefix=/usr/local/  --exclude-subdir
