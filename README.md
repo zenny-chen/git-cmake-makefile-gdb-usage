@@ -215,6 +215,11 @@ file(COPY "${CMAKE_SOURCE_DIR}/some_dir/header.h" "${CMAKE_SOURCE_DIR}/another_d
 ```
 - [file\(DOWNLOAD\)](https://cmake.org/cmake/help/latest/command/file.html#download)
 - CMake修改项目最终生成文件名的前缀和后缀：`set_target_properties(project_name PROPERTIES PREFIX "prefix")`；`set_target_properties(project_name  PROPERTIES SUFFIX "suffix")`。比如，要把输出文件扩展名改为 **.suf**：`set_target_properties(project_name PROPERTIES SUFFIX ".suf")`。如果当前CMake项目是一个Linux上的动态链接库，并且我们想让生成 .so 文件不带有“lib”前缀，则可以：`set_target_properties(MySharedLib PROPERTIES PREFIX "")`，那么最后将会生成“MySharedLib.so”文件。
+- [CMake execute_process](https://cmake.org/cmake/help/latest/command/execute_process.html)（比如：
+```cmake
+execute_process(COMMAND python "${PROJECT_SOURCE_DIR}/script.py" OUTPUT_VARIABLE output)
+message(STATUS ${output})
+）
 - CMake将 **`.h.in`** 文件配置为正式的 **`.h`** 文件：[configure_file](https://cmake.org/cmake/help/latest/command/configure_file.html)
 
 例如：有以下 **.h.in** 文件：
