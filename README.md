@@ -220,6 +220,8 @@ file(COPY "${CMAKE_SOURCE_DIR}/some_dir/header.h" "${CMAKE_SOURCE_DIR}/another_d
 execute_process(COMMAND python "${PROJECT_SOURCE_DIR}/script.py" OUTPUT_VARIABLE output)
 message(STATUS ${output})
 ）
+```
+
 - CMake将 **`.h.in`** 文件配置为正式的 **`.h`** 文件：[configure_file](https://cmake.org/cmake/help/latest/command/configure_file.html)
 
 例如：有以下 **.h.in** 文件：
