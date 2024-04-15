@@ -288,6 +288,20 @@ endif()
 
 set(CUDA_GENCODE "arch=compute_${CUDA_TARGET_COMPUTE_CAPABILITY},code=\"sm_${CUDA_TARGET_COMPUTE_CAPABILITY},compute_${CUDA_TARGET_COMPUTE_CAPABILITY}\"")
 ```
+- CMake 对项目文件进行分组：[source_group](https://cmake.org/cmake/help/latest/command/source_group.html)。比如：
+
+```cmake
+file(GLOB  kernel_header  "${CMAKE_SOURCE_DIR}/path/to/cuh_folder/*.cuh")
+source_group("KERNEL"  FILES ${kernel_header})
+add_library(lib_target  SHARED  ${kernel_header})
+```
+
+- CMake 中把某种文件类型指定为特定文件类型（比如把 **`.cuh`** 文件类型指定为标准 C++ 头文件类型）：需要通过 [set_source_files_properties](https://cmake.org/cmake/help/latest/command/set_source_files_properties.html) 对文件对象设置 [LANGUAGE](https://cmake.org/cmake/help/latest/prop_sf/LANGUAGE.html) 属性。比如：
+
+```cmake
+file(GLOB  kernel_header  "${CMAKE_SOURCE_DIR}/path/to/cuh_folder/*.cuh")
+set_source_files_properties(${kernel_header}  PROPERTIES LANGUAGE CXX  HEADER_FILE_ONLY ON)
+```
 
 <br />
 
