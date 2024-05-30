@@ -109,6 +109,7 @@ So, as long as the CDT doesn't break the xml format for external makefiles you s
 - [CMake ISPC](https://cmake.org/cmake/help/latest/envvar/ISPC.html)
 - [CMAKE添加编译选项](https://blog.csdn.net/qinglongzhan/article/details/80743731)（汇编语言的编译选项的环境变量：`CMAKE_ASM_FLAGS`）
 - [CMAKE_BUILD_TYPE](https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html#variable:CMAKE_BUILD_TYPE)（Debug, Release, RelWithDebInfo and MinSizeRel）
+- 使用 [CMAKE_CONFIGURATION_TYPES](https://cmake.org/cmake/help/latest/variable/CMAKE_CONFIGURATION_TYPES.html) 来配置 CMake 所生成的项目工程所包含的构建类型。比如：`-DCMAKE_CONFIGURATION_TYPES="Debug;Release;MinSizeRel;RelWithDebInfo"`。
 - 编译选项针对不同构建类型的配置：`CMAKE_C_FLAGS_DEBUG`、`CMAKE_C_FLAGS_RELEASE`、`CMAKE_C_FLAGS_RELWITHDEBINFO`。
 - [Using NASM with CMake and Clang](https://metricpanda.com/using-nasm-with-cmake-and-clang/)
 - CMake允许使用指定的编程语言：**[enable_language](https://cmake.org/cmake/help/latest/command/enable_language.html)**
