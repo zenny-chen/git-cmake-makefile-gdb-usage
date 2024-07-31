@@ -305,6 +305,8 @@ file(GLOB  kernel_header  "${CMAKE_SOURCE_DIR}/path/to/cuh_folder/*.cuh")
 set_source_files_properties(${kernel_header}  PROPERTIES LANGUAGE CXX  HEADER_FILE_ONLY ON)
 ```
 
+- [牛X！推荐一个腾讯开源的Markdown编辑器](https://www.toutiao.com/article/7387946688373096994/)
+
 <br />
 
 ### cmake 使用的一个例子
