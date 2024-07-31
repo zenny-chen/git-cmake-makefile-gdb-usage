@@ -307,6 +307,29 @@ set_source_files_properties(${kernel_header}  PROPERTIES LANGUAGE CXX  HEADER_FI
 
 <br />
 
+### cmake 使用的一个例子
+
+本例子基于：[oneTBB Installation from Sources](https://github.com/oneapi-src/oneTBB/blob/master/INSTALL.md)
+
+```cmake
+# Do our experiments in /tmp
+cd /tmp
+# Clone oneTBB repository
+git clone https://github.com/oneapi-src/oneTBB.git
+cd oneTBB
+# Create binary directory for out-of-source build
+mkdir build && cd build
+# Configure: customize CMAKE_INSTALL_PREFIX and disable TBB_TEST to avoid tests build
+cmake -DCMAKE_INSTALL_PREFIX=/tmp/my_installed_onetbb -DTBB_TEST=OFF ..
+# Build
+cmake --build .
+# Install
+cmake --install .
+# Well done! Your installed oneTBB is in /tmp/my_installed_onetbb
+```
+
+<br />
+
 ## makefile的常用用法集合
 
 - [GNU Make in Detail for Beginners](https://opensourceforu.com/2012/06/gnu-make-in-detail-for-beginners/)
