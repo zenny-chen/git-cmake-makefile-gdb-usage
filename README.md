@@ -250,8 +250,9 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/Generated.h.in ${CMAKE_CURRENT_BINARY
 #define MATERIALX_BUILD_VERSION 7
 ```
 
-- [FindCUDAToolkit](https://cmake.org/cmake/help/latest/module/FindCUDAToolkit.html)
+- [FindCUDAToolkit](https://cmake.org/cmake/help/latest/module/FindCUDAToolkit.html)（具体可以用：[**find_package**](https://cmake.org/cmake/help/latest/command/find_package.html#basic-signature)(**`CUDAToolKit`**)）
 - [CMAKE_CUDA_RUNTIME_LIBRARY](https://cmake.org/cmake/help/latest/variable/CMAKE_CUDA_RUNTIME_LIBRARY.html)
+- Link CUDA Driver API library: **`target_link_libraries(project_name `** [**CUDA::cuda_driver**](https://cmake.org/cmake/help/latest/module/FindCUDAToolkit.html#cuda-driver-library) **`)`**
 - CMake中设置CUDA额外编译选项：`TARGET_COMPILE_OPTIONS(project_name PRIVATE $<$<COMPILE_LANGUAGE:CUDA>: --use_fast_math --gpu-architecture=sm35>)`
 - CMake中启用CUDA单独编译（即relocatable device code，-rdc=true）：
 ```cmake
