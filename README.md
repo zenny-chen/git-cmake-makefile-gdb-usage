@@ -128,6 +128,7 @@ set(CMAKE_C_STANDARD  11)
 set(CMAKE_CXX_STANDARD  20)
 ```
 - **CMakeLists.txt** 文件中，[cmake_minimum_required](https://cmake.org/cmake/help/latest/command/cmake_minimum_required.html) 需要放在文件最开始，即倘若当前 **CMakeLists.txt** 文件包含了 **`project`** 语句，则需要放在该语句的上面；否则可能会引发CMake过程中的warning。
+- 添加子目录的 cmake 项目：[**add_subdirectory**](https://cmake.org/cmake/help/latest/command/add_subdirectory.html)
 - CMake添加带有字符串的宏定义： 
 ```cmake
 ADD_COMPILE_DEFINITIONS(SOME_DIR="${CMAKE_INSTALL_PREFIX}")
@@ -332,6 +333,88 @@ cmake --install .
 ```
 
 <br />
+
+## cmake 创建一个 CUDA 项目
+
+```cmake
+cmake_minimum_required(VERSION  3.24.0)
+
+set(CMAKE_MODULE_PATH  "${CMAKE_SOURCE_DIR}/cmake"  "${CMAKE_MODULE_PATH}")
+
+find_package(CUDAToolKit  12.2  REQUIRED)
+
+if(MSVC)
+    if(NOT DEFINED OPENCL_INCLUDE_DIR)
+        set(OPENCL_INCLUDE_DIR  "$ENV{CUDA_PATH}/include/")
+    endif()
+
+    if(NOT DEFINED OPENCL_LIBRARY)
+        set(OPENCL_LIBRARY  "$ENV{CUDA_PATH}/lib/x64/OpenCL.lib")
+    endif()
+
+    add_definitions(-D_CRT_SECURE_NO_DEPRECATE)
+    add_definitions(-D_CRT_SECURE_NO_WARNINGS)
+else()
+    add_compile_definitions(_GLIBCXX_USE_CXX11_ABI=0)
+endif()
+
+set(CMAKE_C_STANDARD  17)
+set(CMAKE_CXX_STANDARD  20)
+
+if(NOT DEFINED CMAKE_CUDA_ARCHITECTURES)
+    set(CMAKE_CUDA_ARCHITECTURES  75)
+endif()
+
+include_directories(${OPENCL_INCLUDE_DIR})
+
+if(CUDA_FOUND)
+    link_libraries(${CUDA_LIBRARIES})
+    include_directories(PRIVATE  ${CUDA_INCLUDE_DIRS})
+else()
+    message(FATAL_ERROR  "CUDA Tool Kit Not Found!")
+
+file(GLOB  h_src    ${PROJ_DIR}/*.h*)
+file(GLOB  c_src    ${PROJ_DIR}/*.c)
+file(GLOB  cpp_src  ${PROJ_DIR}/*.cpp)
+file(GLOB  cuda_h   ${PROJ_DIR}/*.cuh)
+file(GLOB  cuda_src ${PROJ_DIR}/*.cu)
+
+# Make .cuh headers as C++ headers
+set_source_files_properties(${cuda_h}  PROPERTIES  LANGUAGE  CXX  HEADER_FILE_ONLY  ON)
+
+source_group("header"  FILES  ${h_src})
+source_group("cuda_header"  FILES  ${cuda_h})
+source_group("src"  FILES  ${c_src}  ${cpp_src})
+source_group("cuda_src"  FILES  ${cuda_src})
+
+add_library(proj_name  SHARED  ${h_src} {c_src} {cpp_src} {cuda_h} {cuda_src})
+set_target_properties(proj_name  PROPERTIES INTERFACE_LINK_LIBRARIES  ""  CUDA_SEPARABLE_COMPILATION  ON)
+
+set(CUDA_COMPILE_OPTIONS  ${CUDA_COMPILE_OPTIONS}  -G  -g  --use_fast_math  --threads 0)
+
+if(MSVC)
+    set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS}  /Zi")
+    set(CMAKE_SHARED_LINKER_FLAGS  "${CMAKE_SHARED_LINKER_FLAGS}  /DEBUG")
+    set_target_properties(proj_name  PROPERTIES  LINK_FLAGS  "/OPT:ref  /OPT:ICF   /NODEFAULTLIB:LIBCMT")
+else()
+    set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS}  -g")
+
+    # Modify the default `-O3` option to `-O2`
+    string(REGEX  REPLACE  "([\\/\\-]O)3"  "\\12"  CMAKE_CXX_FLAGS_RELEASE  "${CMAKE_CXX_FLAGS_RELEASE}")
+
+    set_target_properties(proj_name  PROPERTIES  LINK_FLAGS  "-s  -Wl,--exclude-libs,ALL")
+endif()
+
+if(CUDA_VERSION_MAJOR  GREATER_EQUAL  11)
+    set(CUDA_COMPILE_OPTIONS  ${CUDA_COMPILE_OPTIONS}  --extended-lambda)
+else()
+    set(CUDA_COMPILE_OPTIONS  ${CUDA_COMPILE_OPTIONS}  --expt-extended-lambda)
+endif()
+
+target_compile_options(proj_name  PRIVATE  $<$<COMPILE_LANGUAGE:CUDA>: ${CUDA_COMPILE_OPTIONS}>)
+
+target_link_libraries(proj_name  PRIVATE  CUDA::cudart  CUDA::cuda_driver)
+```
 
 ## makefile的常用用法集合
 
