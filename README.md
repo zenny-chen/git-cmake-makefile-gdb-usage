@@ -24,6 +24,9 @@ Git、CMake、Makefile、GDB（LLDB）使用技巧
 - 列出指定目录指定日期区间的所有提交，并以日期从老到新的次序排列，最后输出到指定文件：`git log  --reverse  --oneline  --since  ==2020-01-20  --until  ==2021-02-05  project/src/  >  /tmp/commit-log.txt`
 - Linux中配置git的编辑器为系统自带的GEdit编辑器：`git config --global core.editor "gedit -s"`
 - 追加或修改上一次提交的更多提交信息：`git commit --amend`，然后再执行push。
+- ubuntu 22.04开始默认禁用了。解决方法有2个：
+1. 在客户端得ssh得config文件里加PubkeyAcceptedKeyTypes +ssh-rsa。如果要全局处理，就修改/etc/ssh/ssh_config文件，加上述内容。
+1. 可以生成key的时候不用rsa算法，用ed25519或者别的支持的。ssh-keygen -t ed25519 -P '
 
 <br />
 
