@@ -31,7 +31,18 @@ Git、CMake、Makefile、GDB（LLDB）使用技巧
 
 - [Perforce使用教程](https://zhuanlan.zhihu.com/p/45167236)
 
-<br />
+<br/>
+
+## VS Code 自带 Git 的使用步骤
+
+1. Fetch From All Remotes
+1. 如果有新的改动提交，则先 Merge 此提交，然后 Push 到自己分支。
+1. 对于需要修改的文件，先添加 Stage Changes
+1. Commit Staged
+1. Push
+1. 如果 Push 失败，Git 提示需要先 Pull，则先 Pull 一下。
+
+<br/>
 
 ## GDB/LLDB的使用技巧
 
@@ -58,7 +69,7 @@ break set -n main -C "process handle --pass true --stop false SIGSEGV"
 - [gdb（debugger）加入软件断点的本质原理分析](https://www.toutiao.com/a6828945264800170504/)
 - [调试引入的不确定性：必现的BUG神秘消失，断点改变代码执行逻辑](https://www.toutiao.com/article/6830405796770087431/)
 
-<br />
+<br/>
 
 ## CMake的常用用法集合
 
@@ -315,7 +326,7 @@ set_source_files_properties(${kernel_header}  PROPERTIES LANGUAGE CXX  HEADER_FI
 
 - [牛X！推荐一个腾讯开源的Markdown编辑器](https://www.toutiao.com/article/7387946688373096994/)
 
-<br />
+<br/>
 
 ### cmake 使用的一个例子
 
@@ -338,7 +349,7 @@ cmake --install .
 # Well done! Your installed oneTBB is in /tmp/my_installed_onetbb
 ```
 
-<br />
+<br/>
 
 ## cmake 创建一个 CUDA 项目
 
@@ -421,6 +432,8 @@ target_compile_options(proj_name  PRIVATE  $<$<COMPILE_LANGUAGE:CUDA>: ${CUDA_CO
 
 target_link_libraries(proj_name  PRIVATE  CUDA::cudart  CUDA::cuda_driver)
 ```
+
+<br/>
 
 ## makefile的常用用法集合
 
