@@ -68,6 +68,7 @@ break set -n main -C "process handle --pass true --stop false SIGSEGV"
 - [调试程序时，设置断点的原理是什么？](https://www.toutiao.com/a6651660887507599886/)
 - [gdb（debugger）加入软件断点的本质原理分析](https://www.toutiao.com/a6828945264800170504/)
 - [调试引入的不确定性：必现的BUG神秘消失，断点改变代码执行逻辑](https://www.toutiao.com/article/6830405796770087431/)
+- [Linux内核KGDB进阶：源码级调试实战演练](https://mp.weixin.qq.com/s?__biz=Mzg4NDQ0OTI4Ng==&mid=2247493582&idx=1&sn=f9a0110082b0c1547958ed9d2fe8d4b0)
 
 <br/>
 
