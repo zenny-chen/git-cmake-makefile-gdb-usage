@@ -102,6 +102,29 @@ cmake -S src_dir -B build_dir --install-prefix install_dir -j4
 string(REGEX REPLACE  "([\\/\\-]O)3"  "\\12"  CMAKE_CXX_FLAGS_RELEASE  "${CMAKE_CXX_FLAGS_RELEASE}"
 ```
 - [\[CMake\] Return value of cmake string find](https://cmake.org/pipermail/cmake/2014-June/057778.html)
+- CMake中使用多行字符串的两种方式：
+  - 使用 **`[[  ]]`** 的形式——
+```cmake
+set(MY_STRING [[
+This is a multi-line string.
+It can span several lines.
+No need to escape quotes "like this".
+]])
+
+# 字符串中本身包含 [[  ]] 符号：
+```cmake
+set(MY_STRING  [=[
+This string contains [[ brackets ]] safely. ]=]
+)
+```
+  - 使用字符串拼接，里面直接包含 **`\n`**
+```cmake
+set(MY_STRING  "Line 1\n"
+               "Line 2\n"
+               "Line 3")
+
+message("${MY_STRING}")
+```
 - [Back To Basics: CMake Functions and Macros](https://medium.com/@back_to_basics/cmake-functions-and-macros-22293041519f)
 - CMake用于输出消息，即打印字符串：[message](https://cmake.org/cmake/help/latest/command/message.html)（其中，常用的模式有：**`STATUS`**、**`WARNING`** 和 **`FATAL_ERROR`**）
 - CMake 使用系统环境变量：**`$ENV{SYSTEM_VAR_NAME}`**。比如：**`$ENV{CUDA_PATH}`**。
