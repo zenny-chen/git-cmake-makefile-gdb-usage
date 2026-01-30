@@ -97,7 +97,10 @@ cmake -S src_dir -B build_dir --install-prefix install_dir -j4
 - [if](https://cmake.org/cmake/help/latest/command/if.html)
 - [string](https://cmake.org/cmake/help/latest/command/string.html)
 - CMake **`string(TOUPPER <string1> <output variable>)`** 的使用：[CMake Regex to convert lower case to upper case](https://stackoverflow.com/questions/4905340/cmake-regex-to-convert-lower-case-to-upper-case)
-- CMake 使用 string 命令的正则表达式将一个字符串中指定的子串替换为目标子串（比如将 RELEASE 编译选项中所有出现的 **`-O3`** 全都改为 **`-O2`**）：**`string(REGEX REPLACE  "([\\/\\-]O)3"  "\\12"  CMAKE_CXX_FLAGS_RELEASE  "${CMAKE_CXX_FLAGS_RELEASE}"`**
+- CMake 使用 string 命令的正则表达式将一个字符串中指定的子串替换为目标子串（比如将 RELEASE 编译选项中所有出现的 **`-O3`** 全都改为 **`-O2`**）：
+```cmake
+string(REGEX REPLACE  "([\\/\\-]O)3"  "\\12"  CMAKE_CXX_FLAGS_RELEASE  "${CMAKE_CXX_FLAGS_RELEASE}"
+```
 - [\[CMake\] Return value of cmake string find](https://cmake.org/pipermail/cmake/2014-June/057778.html)
 - [Back To Basics: CMake Functions and Macros](https://medium.com/@back_to_basics/cmake-functions-and-macros-22293041519f)
 - CMake用于输出消息，即打印字符串：[message](https://cmake.org/cmake/help/latest/command/message.html)（其中，常用的模式有：**`STATUS`**、**`WARNING`** 和 **`FATAL_ERROR`**）
