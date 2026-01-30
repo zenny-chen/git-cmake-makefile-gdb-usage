@@ -90,12 +90,14 @@ sudo sh cmake-<version>-linux-x86_64.sh  --prefix=/usr/local/  --exclude-subdir
 # --install-prefix 对应于 CMAKE_INSTALL_PREFIX
 cmake -S src_dir -B build_dir --install-prefix install_dir -j4
 ```
+- CMake 源文件路径：**`${CMAKE_SOURCE_DIR}`**；编译构建时生成目标文件的路径：**`${CMAKE_BINARY_DIR}`**。
 - CMake指定安装目录：[CMAKE_INSTALL_PREFIX](https://cmake.org/cmake/help/latest/variable/CMAKE_INSTALL_PREFIX.html)（这里要注意的是，**`CMAKE_INSTALL_PREFIX`** 与 **`--install-prefix`** 必须指定为 **绝对路径**。）
 - 判定CMake中某个符号是否没有被定义使用：`if(NOT DEFINED CMAKE_BUILD_TYPE)`。可参考：[Why if\(DEFINED <variable>\) doesn't work in cmake? \[duplicate\]](https://stackoverflow.com/questions/51621228/why-ifdefined-variable-doesnt-work-in-cmake)
 - [If value not equal in cmake 2.8](https://stackoverflow.com/questions/11741325/if-value-not-equal-in-cmake-2-8)（使用`if(NOT <expression>)`时，里面的 **`NOT`** 必须是全大写）
 - [if](https://cmake.org/cmake/help/latest/command/if.html)
 - [string](https://cmake.org/cmake/help/latest/command/string.html)
 - CMake **`string(TOUPPER <string1> <output variable>)`** 的使用：[CMake Regex to convert lower case to upper case](https://stackoverflow.com/questions/4905340/cmake-regex-to-convert-lower-case-to-upper-case)
+- CMake 使用 string 命令的正则表达式将一个字符串中指定的子串替换为目标子串（比如将 RELEASE 编译选项中所有出现的 **`-O3`** 全都改为 **`-O2`**）：**`string(REGEX REPLACE  "([\\/\\-]O)3"  "\\12"  CMAKE_CXX_FLAGS_RELEASE  "${CMAKE_CXX_FLAGS_RELEASE}"`**
 - [\[CMake\] Return value of cmake string find](https://cmake.org/pipermail/cmake/2014-June/057778.html)
 - [Back To Basics: CMake Functions and Macros](https://medium.com/@back_to_basics/cmake-functions-and-macros-22293041519f)
 - CMake用于输出消息，即打印字符串：[message](https://cmake.org/cmake/help/latest/command/message.html)（其中，常用的模式有：**`STATUS`**、**`WARNING`** 和 **`FATAL_ERROR`**）
@@ -238,6 +240,7 @@ install(FILES ${MY_SRC_LIB}/file.txt  RENAME file.log  DESTINATION dst_dir)
 file(COPY "${CMAKE_SOURCE_DIR}/some_dir/header.h" "${CMAKE_SOURCE_DIR}/another_dir/resource.res" DESTINATION "${CMAKE_BINARY_DIR}/dir")
 ```
 - [file\(DOWNLOAD\)](https://cmake.org/cmake/help/latest/command/file.html#download)
+- 使用 **`FILE`** 命令创建目录：**`file(MAKE_DIRECTORY  ${CMAKE_BINARY_DIR}/my_generated_dir)`**
 - CMake修改项目最终生成文件名的前缀和后缀：`set_target_properties(project_name PROPERTIES PREFIX "prefix")`；`set_target_properties(project_name  PROPERTIES SUFFIX "suffix")`。比如，要把输出文件扩展名改为 **.suf**：`set_target_properties(project_name PROPERTIES SUFFIX ".suf")`。如果当前CMake项目是一个Linux上的动态链接库，并且我们想让生成 .so 文件不带有“lib”前缀，则可以：`set_target_properties(MySharedLib PROPERTIES PREFIX "")`，那么最后将会生成“MySharedLib.so”文件。
 - [CMake execute_process](https://cmake.org/cmake/help/latest/command/execute_process.html)（比如：
 ```cmake
