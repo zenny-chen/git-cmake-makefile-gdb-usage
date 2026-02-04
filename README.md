@@ -420,13 +420,13 @@ if(CUDA_FOUND)
 else()
     message(FATAL_ERROR  "CUDA Tool Kit Not Found!")
 
-file(GLOB  h_src    ${PROJ_DIR}/*.h*)
-file(GLOB  c_src    ${PROJ_DIR}/*.c)
-file(GLOB  cpp_src  ${PROJ_DIR}/*.cpp)
-file(GLOB  cuda_h   ${PROJ_DIR}/*.cuh)
-file(GLOB  cuda_src ${PROJ_DIR}/*.cu)
+file(GLOB  h_src    ${CMAKE_SOURCE_DIR}/*.h*)
+file(GLOB  c_src    ${CMAKE_SOURCE_DIR}/*.c)
+file(GLOB  cpp_src  ${CMAKE_SOURCE_DIR}/*.cpp)
+file(GLOB  cuda_h   ${CMAKE_SOURCE_DIR}/*.cuh)
+file(GLOB  cuda_src ${CMAKE_SOURCE_DIR}/*.cu)
 
-# Make .cuh headers as C++ headers
+# Make .cuh headers as C/C++ headers
 set_source_files_properties(${cuda_h}  PROPERTIES  LANGUAGE  CXX  HEADER_FILE_ONLY  ON)
 
 source_group("header"  FILES  ${h_src})
