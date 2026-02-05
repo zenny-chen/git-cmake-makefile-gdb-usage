@@ -253,7 +253,7 @@ set(CMAKE_SHARED_LINKER_FLAGS_DEBUG  "${CMAKE_SHARED_LINKER_FLAGS_DEBUG} -g")
 set_target_properties(appName PROPERTIES VS_DEBUGGER_WORKING_DIRECTORY "PATH=${CMAKE_INSTALL_PREFIX}/bin;%PATH% \$(LocalDebuggerEnvironment)"
 ```
 - [CMake INSTALL](https://cmake.org/cmake/help/latest/command/install.html)
-- CMake为MSVC安装pdb调试文件到目标 **bin** 目录：
+- CMake为 **MSVC** 安装 **pdb** 调试文件到目标 **bin** 目录：
 ```cmake
 install(FILES $<TARGET_PDB_FILE:project_name> DESTINATION bin)
 ```
