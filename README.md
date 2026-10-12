@@ -29,6 +29,7 @@ Git、CMake、Makefile、GDB（LLDB）使用技巧
 1. 在客户端得ssh得config文件里加PubkeyAcceptedKeyTypes +ssh-rsa。如果要全局处理，就修改 **`/etc/ssh/ssh_config`** 文件，加上述内容。
 1. 可以生成 key 的时候不用 rsa 算法，用 **`ed25519`** 或者别的支持的。比如：**`ssh-keygen -t ed25519 -P ""`**
 
+- Windows 系统下删除 **SourceTree** 旧有的密码：先进入 `%AppData%/../Local/Atlassian/SourceTree` 目录，然后删除 `passwd` 文件即可。
 - [Perforce使用教程](https://zhuanlan.zhihu.com/p/45167236)
 
 <br/>
